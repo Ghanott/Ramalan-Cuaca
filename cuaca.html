@@ -1,0 +1,115 @@
+﻿<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prakiraan Cuaca</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <main class="page">
+        <section class="hero">
+            <div>
+                <span class="badge">Prakiraan Cuaca</span>
+                <br><br>
+                <h1>Ramalan Cuaca.</h1>
+                <p>
+                    Pantau kondisi cuaca terbaru hingga tingkat desa/kelurahan di Pulau Jawa secara otomatis.
+                    Dapatkan informasi suhu udara, kelembapan, arah & kecepatan angin, tutupan awan, jarak pandang,
+                    serta waktu produksi data langsung dari sumber resmi BMKG.
+                </p>
+            </div>
+            <div class="controls">
+                <label>Wilayah Pulau Jawa</label>
+                <div class="select-grid">
+                    <select id="provinsi">
+                        <option value="">Pilih provinsi</option>
+                        <option value="31-dki-jakarta">DKI Jakarta</option>
+                        <option value="32-jawa-barat">Jawa Barat</option>
+                        <option value="33-jawa-tengah">Jawa Tengah</option>
+                        <option value="34-daerah-istimewa-yogyakarta">
+                            DI Yogyakarta
+                        </option>
+                        <option value="35-jawa-timur">Jawa Timur</option>
+                        <option value="36-banten">Banten</option>
+                    </select>
+                    <select id="kabupaten" disabled>
+                        <option value="">Pilih kabupaten/kota</option>
+                    </select>
+                    <select id="kecamatan" disabled>
+                        <option value="">Pilih kecamatan</option>
+                    </select>
+                    <select id="desa" disabled>
+                        <option value="">Pilih desa/kelurahan</option>
+                    </select>
+                </div>
+                <div class="hint" id="adm4Hint">
+                    Pilih provinsi, kabupaten/kota, kecamatan, dan desa/kelurahan.
+                </div>
+                <label for="adm4">Kode Wilayah</label>
+                <input id="adm4" type="text" placeholder="Terisi otomatis dari pilihan wilayah" autocomplete="off" />
+                <button id="btnFetch">Ambil Prakiraan</button>
+                <button id="btnLocation" class="secondary">📍 Cek Lokasi Saya</button>
+                <div class="status" id="status">Siap menerima permintaan.</div>
+            </div>
+        </section>
+
+        <section class="grid" id="summary">
+            <div class="card">
+                <strong>Waktu Lokal</strong>
+                <div class="value" id="localTime">-</div>
+                <div class="sub" id="utcTime">UTC: -</div>
+            </div>
+            <div class="card">
+                <strong>Kondisi Cuaca</strong>
+                <div class="value" id="weatherDesc">-</div>
+                <div class="sub" id="weatherDescEn">-</div>
+            </div>
+            <div class="card">
+                <strong>Suhu & Kelembapan</strong>
+                <div class="value" id="temp">-</div>
+                <div class="sub" id="humidity">-</div>
+            </div>
+            <div class="card">
+                <strong>Angin</strong>
+                <div class="value" id="wind">-</div>
+                <div class="sub" id="windDir">-</div>
+            </div>
+            <div class="card">
+                <strong>Tutupan Awan</strong>
+                <div class="value" id="cloud">-</div>
+                <div class="sub" id="visibility">-</div>
+            </div>
+            <div class="card">
+                <strong>Produksi Data</strong>
+                <div class="value" id="analysis">-</div>
+                <div class="sub">Update terakhir BMKG</div>
+            </div>
+        </section>
+
+        <section class="forecast" id="forecast">
+            <h2>Timeline Prakiraan</h2>
+            <div class="forecast-list" id="forecastList">
+                <div class="row">
+                    <div class="main">Masukkan kode wilayah untuk melihat timeline.</div>
+                    <span>-</span>
+                    <span>-</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer " id="footerNote">
+            Sumber data: BMKG API publik.
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
